@@ -47,7 +47,7 @@ fi
 if [ -d .repo/local_manifests ] ;then
 	( cd .repo/local_manifests; git fetch; git reset --hard; git checkout origin/$localManifestBranch)
 else
-	git clone https://github.com/phhusson/treble_manifest .repo/local_manifests -b $localManifestBranch
+	git clone https://github.com/oscx/treble_manifest .repo/local_manifests -b $localManifestBranch
 fi
 
 if [ -z "$local_patches" ];then
@@ -90,14 +90,15 @@ buildVariant() {
 }
 
 repo manifest -r > release/$rom_fp/manifest.xml
-buildVariant treble_arm64_avN-userdebug arm64-aonly-vanilla-nosu
-buildVariant treble_arm64_agS-userdebug arm64-aonly-gapps-su
-buildVariant treble_arm64_bvN-userdebug arm64-ab-vanilla-nosu
-buildVariant treble_arm64_bgS-userdebug arm64-ab-gapps-su
-buildVariant treble_arm_avN-userdebug arm-aonly-vanilla-nosu
-buildVariant treble_arm_aoS-userdebug arm-aonly-gapps
-buildVariant treble_a64_avN-userdebug arm32_binder64-aonly-vanilla-nosu
-buildVariant treble_a64_agS-userdebug arm32_binder64-aonly-gapps-su
+buildVariant treble_arm64_avN-userdebug arm64-aonly-vanilla-su
+#buildVariant treble_arm64_avN-userdebug arm64-aonly-vanilla-nosu
+#buildVariant treble_arm64_agS-userdebug arm64-aonly-gapps-su
+#buildVariant treble_arm64_bvN-userdebug arm64-ab-vanilla-nosu
+#buildVariant treble_arm64_bgS-userdebug arm64-ab-gapps-su
+#buildVariant treble_arm_avN-userdebug arm-aonly-vanilla-nosu
+#buildVariant treble_arm_aoS-userdebug arm-aonly-gapps
+#buildVariant treble_a64_avN-userdebug arm32_binder64-aonly-vanilla-nosu
+#buildVariant treble_a64_agS-userdebug arm32_binder64-aonly-gapps-su
 
 if [ "$release" == true ];then
     (
